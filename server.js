@@ -7,7 +7,7 @@ var fs          = require('fs');
 var serveStatic = require('serve-static-restify');
 var jwt         = require('restify-jwt');
 const Settings  = require('./settings');
-var port        = process.env.PORT || 8080;
+var port        = process.env.PORT || 5000;
 
 const GooglePlaceController = require('./controller/GooglePlaceController');
 
@@ -29,7 +29,7 @@ server.post('searchTerm', GooglePlaceController.searchTerm);
 
 // Start server
 Models.sequelize.sync().then(() => {
-    server.listen(8080, function (){
+    server.listen(process.env.PORT || 5000, function (){
         console.log('Start server on port 8080')
     });
 });
